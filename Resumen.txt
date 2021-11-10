@@ -1,0 +1,30 @@
+CREATE DATABASE database_name
+ON     (NAME=logical_file_name, FILENAME=FULL_file_name.mdf)
+LOG ON (NAME=logical_file_name, FILENAME=FULL_file_name.ldf)
+
+CREATE TABLE table_name (<column_definition>, ...)
+<column_definition>:
+   column_name data_type
+    [ [ CONSTRAINT constraint_name ] DEFAULT constant_expression ]
+    [ IDENTITY [ ( seed , increment ) ]
+    [ NULL | NOT NULL ]
+
+data_type:
+ Exact numerics: bigint,numeric,bit,smallint,decimal,smallmoney,int,tinyint,money
+ Approximate numerics: float,real
+ Date and time: date,datetimeoffset,datetime2,smalldatetime,datetime,time
+ Character strings: char,varchar,text
+ Unicode character strings: nchar,nvarchar,ntext
+ Binary strings: binary,varbinary,image
+
+CREATE UNIQUE INDEX Nombre_Index ON Tabla(Columnas)
+ALTER TABLE Tabla
+   ADD CONSTRAINT Nombre_Restricción FOREIGN KEY (ColumnasOrigen)
+   REFERENCES TablaDestino (ColumnasDestino)
+   ON UPDATE [ NO ACTION | CASCADE ] ON DELETE [ NO ACTION | CASCADE ]
+
+INSERT Tabla [ (Columnas) ] VALUES (Valores) o SELECT ...
+UPDATE Tabla SET Variable=Valor, ... WHERE
+DELETE FROM Tabla WHERE 
+
+SELECT Columnas FROM Tabla (JOIN) WHERE Expresión
